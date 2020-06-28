@@ -1,7 +1,6 @@
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
-import withRedux from 'next-redux-wrapper';
-import store from '../store';
+import { wrapper } from '../store';
 
 const theme = {
   colors: {
@@ -9,29 +8,26 @@ const theme = {
   }
 };
 
-const App = ({ store }) => {
-  const { Component, pageProps } = this.props;
+const App = ({ Component, pageProps }) => {
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-        <style jsx global>{`
-          html,
-          body {
-            padding: 0;
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-              Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-              sans-serif;
-          }
+    <ThemeProvider theme={theme}>
+      <Component {...pageProps} />
+      <style jsx global>{`
+        html,
+        body {
+          padding: 0;
+          margin: 0;
+          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+            sans-serif;
+        }
 
-          * {
-            box-sizing: border-box;
-          }
-        `}</style>
-      </ThemeProvider>
-    </Provider>
+        * {
+          box-sizing: border-box;
+        }
+      `}</style>
+    </ThemeProvider>
   );
 };
 
-export default withRedux(store)(App);
+export default wrapper.withRedux(App);
