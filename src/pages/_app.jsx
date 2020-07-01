@@ -1,5 +1,5 @@
+import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import { Provider } from 'react-redux';
 import { wrapper } from '../store';
 
 const theme = {
@@ -11,23 +11,31 @@ const theme = {
 const App = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={theme}>
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Component {...pageProps} />
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
+      <style jsx global>
+        {`
+          html,
+          body {
+            padding: 0;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+              Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+              sans-serif;
+          }
 
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
+          * {
+            box-sizing: border-box;
+          }
+        `}
+      </style>
     </ThemeProvider>
   );
+};
+
+App.propTypes = {
+  Component: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
+  pageProps: PropTypes.objectOf(PropTypes.any).isRequired
 };
 
 export default wrapper.withRedux(App);

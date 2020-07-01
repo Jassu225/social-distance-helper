@@ -11,7 +11,9 @@
     "source.fixAll.stylelint": true
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  // "[javascriptreact]": {
+  //   "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  // },
+  "eslint.enable": true,
+  "eslint.packageManager": "yarn"
 }
