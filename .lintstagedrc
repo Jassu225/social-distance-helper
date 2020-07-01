@@ -2,6 +2,6 @@
   "src/**/*.{js,jsx,json}": [
     "prettier --write",
     "stylelint --fix",
-    "eslint --cache --fix",
+    "eslint --fix",
   ]
 }
