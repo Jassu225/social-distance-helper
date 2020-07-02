@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2018",
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@base/*": ["./src/components/base/*"],
+      "@composite/*": ["./src/components/composite/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@actions/*": ["./src/store/actions/*"],
+      "@selectors/*": ["./src/store/selectors/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
